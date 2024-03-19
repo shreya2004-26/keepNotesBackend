@@ -2,6 +2,7 @@
 import express from "express";
 import connectDB from "./config/database.js";
 import UsersRoute from "./Routes/UsersRoute.js";
+import cors from "cors";
 
 //initialize an instance of express function
 const app = express();
@@ -11,8 +12,10 @@ app.get("/", (req, res) => {
   res.send("This server created by shreya");
 });
 
+app.use(cors());
 // connect database with server
 connectDB();
+
 
 //to accept the data in json format from frontend
 app.use(express.json());

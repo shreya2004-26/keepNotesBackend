@@ -1,4 +1,3 @@
-import express from "express";
 import users from "../Models/users.js";
 
 const Login = async (req, res) => {
@@ -18,7 +17,7 @@ const Login = async (req, res) => {
 
     //now if user is present then check the password with the sent password .i.e from frontend
     if (user.password === password) {
-      res.status(200).json({
+      return res.status(200).json({
         message: "User is successfully login",
         data: user,
         success: true,
@@ -30,7 +29,7 @@ const Login = async (req, res) => {
       .status(200)
       .json({ message: "Invalid Credentials", success: false });
   } catch (err) {
-    res.status(200).json({ message: err.message, data: null });
+    return res.status(200).json({ message: err.message, data: null });
   }
 };
 
