@@ -3,6 +3,7 @@ import express from "express";
 import connectDB from "./config/database.js";
 import UsersRoute from "./Routes/UsersRoute.js";
 import cors from "cors";
+import NotesRoute from "./Routes/NotesRoute.js";
 
 //initialize an instance of express function
 const app = express();
@@ -16,11 +17,11 @@ app.use(cors());
 // connect database with server
 connectDB();
 
-
 //to accept the data in json format from frontend
 app.use(express.json());
 
 app.use("/api", UsersRoute);
+app.use("/api/notes", NotesRoute);
 
 const port = "8000";
 
